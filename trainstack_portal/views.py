@@ -1,7 +1,7 @@
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 from django.http.response import HttpResponseRedirect
-from django.shortcuts import render, render_to_response
+from django.shortcuts import render
 from django.contrib.auth.models import User, Group
 from trainstack_portal import settings
 from trainstack_portal.forms import CreateUserForm, CreateGroupForm
@@ -20,35 +20,39 @@ def logout(request):
     return HttpResponseRedirect("/login")
 
 @login_required
-def crtuser(request):
+def createUser(request):
     form=CreateUserForm(request.POST)
     if form.is_valid():
         form.save()
     users=User.objects.all()
     templates={'form': form, 'users': users}
-    return render(request, "prof.html", templates)
+    return render(request, "general_form.html", templates)
 
 @login_required
-def crtgroup(request):
+def createGroup(request):
     form=CreateGroupForm(request.POST)
     if form.is_valid():
         form.save()
     groups=Group.objects.all()
     templates={'form': form, 'groups': groups}
-    return render(request, "prof.html", templates)    
+    return render(request, "general_form.html", templates)
 
 @login_required
-def display(request):
+def groups(request):
     grp=User.objects.select_related().all()
     top=Topology.objects.select_related().all()
-    return render(request,'displ.html', {
+    return render(request,'groups.html', {
         "grp": grp, "top": top,
     })
 
 @login_required
-def topo(request):
-    return render(request,'topo.html')   
+def topologies(request):
+    return render(request,'topology.html')
 
 @login_required
-def tsk(request):
-    return render(request,'tsk.html')
+def topology(request, id):
+    return render(request,'topology.html')
+
+@login_required
+def tasks(request):
+    return render(request,'tasks.html')

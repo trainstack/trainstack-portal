@@ -45,13 +45,13 @@
               <b class="caret"></b>
               </a>
               <ul class="dropdown-menu">
-                <li><a href={% url "trainstack_portal.views.display" %}> Посмотреть список</a></li>
-                <li><a href={% url "trainstack_portal.views.crtgroup" %}> Создать группу</a></li>
-                <li><a href={% url "trainstack_portal.views.crtuser" %}> Создать пользователя</a></li>
+                <li><a href={% url "trainstack_portal.views.groups" %}> Посмотреть список</a></li>
+                <li><a href={% url "trainstack_portal.views.createGroup" %}> Создать группу</a></li>
+                <li><a href={% url "trainstack_portal.views.createUser" %}> Создать пользователя</a></li>
               </ul>
             </li>
-            <li><a href={% url "trainstack_portal.views.tsk" %}>Задания</a></li>
-            <li><a href={% url "trainstack_portal.views.topo" %}>Топологии</a></li>
+            <li><a href={% url "trainstack_portal.views.tasks" %}>Задания</a></li>
+            <li><a href={% url "trainstack_portal.views.topologies" %}>Топологии</a></li>
           </ul>
           <div class="nav pull-right">
                 <div class="btn-group">

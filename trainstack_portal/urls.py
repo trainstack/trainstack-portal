@@ -1,7 +1,7 @@
 from django.conf.urls import patterns, include, url
 from django.contrib.auth.views import login, logout
 from django.conf.urls import *
-from trainstack_portal.views import crtuser, display, crtgroup, topo, tsk
+from trainstack_portal.views import createUser, groups, createGroup, topology, tasks, topologies
 from django.contrib import admin
 admin.autodiscover()
 
@@ -13,13 +13,14 @@ urlpatterns = patterns('',
     (r'^login/$', 'django.contrib.auth.views.login', {'template_name': 'login.html', }),
     (r'^logout/$', 'django.contrib.auth.views.logout', {'next_page': '/login'}),
     (r'', include('django.contrib.auth.urls')),
-    (r'^$', display),
-    (r'^profile/$', display),
     (r'^admin/', include(admin.site.urls)),
-    (r'^crt/', crtuser),
-    (r'^crtg/', crtgroup),
-    (r'^topo/', topo),
-    (r'^tsk/', tsk),
+    (r'^$', groups),
+    (r'^groups/$', groups),
+    (r'^groups/create$', createGroup),
+    (r'^users/create$', createUser),
+    (r'^topologies/$', topologies),
+    (r'^topologies/(\d+)$', topology),
+    (r'^tasks/$', tasks),
 
 )
 
