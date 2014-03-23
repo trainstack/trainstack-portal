@@ -1,10 +1,13 @@
-from django.db import models
+from django.db.models import CharField, TextField, ForeignKey, BooleanField, Model
 from django.contrib.auth.models import User
 
-class topology(models.Model):
-	name=models.CharField(max_length=50)
-	jsonData=models.TextField(blank=True)
-	user=models.ForeignKey(User)
-	task=models.BooleanField(default='false')
-	instance_id=models.CharField(max_length=50)
+class Task(Model):
+    text=TextField()
+
+class Topology(Model):
+    name = CharField(max_length=50)
+    jsonData = TextField(blank=True)
+    user = ForeignKey(User)
+    task = BooleanField(default='false')
+    instance_id = CharField(max_length=50)
 

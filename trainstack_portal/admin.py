@@ -1,6 +1,7 @@
 from django.contrib import admin
-from trainstack_portal.models import topology
+from trainstack_portal.models import Topology
 
-class topologyAdmin(admin.ModelAdmin):
+class TopologyAdmin(admin.ModelAdmin):
     pass
-admin.site.register(topology, topologyAdmin)
+
+admin.site.register(Topology, TopologyAdmin)

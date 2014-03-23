@@ -1,11 +1,11 @@
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
+from django.http.response import HttpResponseRedirect
 from django.shortcuts import render, render_to_response
 from django.contrib.auth.models import User, Group
+from trainstack_portal import settings
 from trainstack_portal.forms import CreateUserForm, CreateGroupForm
-from django.http import HttpResponse
-from django.template import Context, loader
-from trainstack_portal.models import topology
+from trainstack_portal.models import Topology
 
 def login(request):
     username = request.POST['username']
@@ -15,14 +15,9 @@ def login(request):
         auth.login(request, user)
         return HttpResponseRedirect(request.GET.get('next', settings.LOGIN_REDIRECT_URL))
 
-
 def logout(request):
     auth.logout(request)
     return HttpResponseRedirect("/login")
-
-@login_required
-def someview(request):
-   return render_to_response('profile.html')
 
 @login_required
 def crtuser(request):
@@ -45,7 +40,7 @@ def crtgroup(request):
 @login_required
 def display(request):
     grp=User.objects.select_related().all()
-    top=topology.objects.select_related().all()
+    top=Topology.objects.select_related().all()
     return render(request,'displ.html', {
         "grp": grp, "top": top,
     })
@@ -56,4 +51,4 @@ def topo(request):
 
 @login_required
 def tsk(request):
-    return render(request,'tsk.html')   
+    return render(request,'tsk.html')

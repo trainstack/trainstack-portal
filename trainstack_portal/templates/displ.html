@@ -1,4 +1,4 @@
-{% extends "base2.html" %}
+{% extends "base.html" %}
 {%block content%}
 <div class="row">
     <div class="span8 offset2">
@@ -22,17 +22,21 @@
         <td>{{ User.last_name }}</td>
        	<td>{{ User.email }}</td>
         <td>{% for Group in User.groups.all %}{{ Group.name }} {% endfor %}</td>
-        <td><select multiple="multiple">
+        <td>
+            <select multiple="multiple">
 			{% for topology in top %}
             <option>{{topology.name}}</option>
-            {% endfor %}</select>
-</td>
-        <td><select multiple="multiple">
+            {% endfor %}
+            </select>
+        </td>
+        <td>
+            <select multiple="multiple">
 			{% for User in topology.user.all %}
             <option>{{topology.name}}</option>
-            {% endfor %}</select>
-			</select></td>
-			    </tr>
+            {% endfor %}
+            </select>
+		</td>
+    </tr>
     {% endfor %}
 </table>
 	
