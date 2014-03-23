@@ -1,21 +1,21 @@
 {% extends "base.html" %}
 {%block content%}
 
-    <div class="row">
-        <div class="span4">
-            <center><h5>Задание 1</h5></center>
-                <pre><ul>
+    <div class="row-fluid">
+        <div class="span4 task">
+            <h5>Задание 1</h5>
+                <ul>
                     <li> Проверить работоспособность топологии.</li>
                     <li> Подключить к топологии еще один компьютер.</li>
-                    <li> Выполнить команду ping на подключенный компьютер.</li></ul>
-                </pre>
+                    <li> Выполнить команду ping на подключенный компьютер.</li>
+                </ul>
             <label class="checkbox">
                 <input type="checkbox" value="">
                 Выполнено
             </label>
             <center><a class="btn btn-success" href="#">Зачесть <i class="icon-ok"></i></a></center>
         </div>
-        <div class="span9">
+        <div class="span8">
             <img src="{{STATIC_URL}}img/2.png">
         </div>
     </div>
