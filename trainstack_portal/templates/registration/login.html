@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+{% load staticfiles %}
+<center><img src="{% static "trainlogobig.png" %}" width="300" height="300" class="img-rounded" alt="TrainStack"/></center>  
+    <form class="form-signin" action='.' method='post'>
+        <div class="control-group">
+        <label class="control-label" for="username">Login</label>
+        <div class="controls">
+        <input type="text" name="username" value="" id="username" placeholder="username">
+        </div>
+        </div>
+        <div class="control-group">
+        <label class="control-label" for="password">Password</label>
+        <div class="controls">
+        <input type="password" name="password" value="" placeholder="password">
+        </div>
+        </div>
+        <div class="control-group">
+        <div class="controls">
+        <input type="submit" class="btn" value="Login" />
+        <input type="hidden" name="next" value="{{ next }}" />
+        </div>
+        </div>
+    </form>
+    {% if form.errors %}
+      <center><p class="error">Сожалеем, вы неправильно ввели логин или пароль</p></center>
+  {% endif %}  
+{% endblock %}
